@@ -300,30 +300,29 @@ export default function HeroSection() {
           {/* Phase 2b: Positioning statement */}
           <ScrollRevealLine
             scrollProgress={scrollYProgress}
-            enterAt={[0.15, 0.35]}
+            enterAt={[0.10, 0.35]}
             className="mb-4"
           >
             <p className="text-lg sm:text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto">
-              Building enterprise systems that endure.
+              I design and build enterprise-grade systems.
             </p>
           </ScrollRevealLine>
 
           {/* Phase 2c: How-he-thinks line */}
           <ScrollRevealLine
             scrollProgress={scrollYProgress}
-            enterAt={[0.25, 0.45]}
+            enterAt={[0.15, 0.45]}
             className="mb-10"
           >
             <p className="text-base sm:text-lg text-muted-foreground/80 max-w-2xl mx-auto leading-relaxed">
-              Defined by infrastructure literacy, leadership under pressure,
-              and long-term thinking.
+              Clean code. Strong systems. Real impact.
             </p>
           </ScrollRevealLine>
 
           {/* Phase 3: CTA */}
           <ScrollRevealLine
             scrollProgress={scrollYProgress}
-            enterAt={[0.35, 0.55]}
+            enterAt={[0.2, 0.55]}
           >
             <a
               href="#projects"
