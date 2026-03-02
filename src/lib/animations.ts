@@ -117,3 +117,101 @@ export const scrollIndicatorBounce = {
   animate: { y: [0, 8, 0] },
   transition: { duration: 1.8, repeat: Infinity, ease: 'easeInOut' },
 }
+
+// ——————————————————————————————————————
+// Phase 3: Section animation presets
+// ——————————————————————————————————————
+
+/** Stagger container for whileInView — children animate sequentially */
+export const staggerContainerInView = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      when: 'beforeChildren' as const,
+      staggerChildren: 0.12,
+      delayChildren: 0.1,
+    },
+  },
+}
+
+/** Stagger child — fade up with blur clear */
+export const staggerChildFadeUp = {
+  hidden: { opacity: 0, y: 30, filter: 'blur(6px)' },
+  visible: {
+    opacity: 1,
+    y: 0,
+    filter: 'blur(0px)',
+    transition: {
+      default: { type: 'spring' as const, visualDuration: 0.6, bounce: 0.15 },
+      opacity: { duration: 0.5, ease: 'easeOut' as const },
+      filter: { duration: 0.5, ease: 'easeOut' as const },
+    },
+  },
+}
+
+/** Stagger child — slide in from left */
+export const staggerChildSlideLeft = {
+  hidden: { opacity: 0, x: -40 },
+  visible: {
+    opacity: 1,
+    x: 0,
+    transition: {
+      default: { type: 'spring' as const, visualDuration: 0.6, bounce: 0.15 },
+      opacity: { duration: 0.4, ease: 'easeOut' as const },
+    },
+  },
+}
+
+/** Stagger child — scale reveal with glow */
+export const staggerChildScaleIn = {
+  hidden: { opacity: 0, scale: 0.85 },
+  visible: {
+    opacity: 1,
+    scale: 1,
+    transition: {
+      default: { type: 'spring' as const, visualDuration: 0.5, bounce: 0.2 },
+      opacity: { duration: 0.4, ease: 'easeOut' as const },
+    },
+  },
+}
+
+/** Timeline node entrance — ping + scale */
+export const timelineNodeEntrance = {
+  hidden: { scale: 0, opacity: 0 },
+  visible: {
+    scale: 1,
+    opacity: 1,
+    transition: {
+      type: 'spring' as const,
+      visualDuration: 0.6,
+      bounce: 0.3,
+    },
+  },
+}
+
+/** Timeline connector line grow */
+export const timelineLineGrow = {
+  hidden: { scaleY: 0 },
+  visible: {
+    scaleY: 1,
+    transition: {
+      duration: 0.6,
+      ease: 'easeOut' as const,
+    },
+  },
+}
+
+/** Card hover with glow effect */
+export const cardHoverGlow = {
+  whileHover: {
+    y: -6,
+    boxShadow: '0 20px 60px rgba(34, 197, 94, 0.15), 0 8px 24px rgba(0, 0, 0, 0.3)',
+    borderColor: 'rgba(34, 197, 94, 0.4)',
+  },
+  transition: {
+    type: 'spring',
+    visualDuration: 0.3,
+    bounce: 0.2,
+  },
+}

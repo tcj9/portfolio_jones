@@ -1,4 +1,8 @@
 import HeroSection from '../components/HeroSection'
+import AboutSection from '../components/AboutSection'
+import ProjectsSection from '../components/ProjectsSection'
+import SkillsSection from '../components/SkillsSection'
+import ContactSection from '../components/ContactSection'
 
 export default function HomePage() {
   return (
@@ -6,29 +10,17 @@ export default function HomePage() {
       {/* Hero Section — Cinematic Scrollytelling */}
       <HeroSection />
 
-      {/* About Section - Placeholder */}
-      <section id="about" className="py-16 px-4 max-w-4xl mx-auto">
-        <h2 className="text-4xl font-bold mb-8">About Me</h2>
-        <p className="text-lg text-muted-foreground">About section coming soon</p>
-      </section>
+      {/* About Section — Journey Timeline */}
+      <AboutSection />
 
-      {/* Projects Section - Placeholder */}
-      <section id="projects" className="py-16 px-4 max-w-4xl mx-auto">
-        <h2 className="text-4xl font-bold mb-8">Featured Projects</h2>
-        <p className="text-lg text-muted-foreground">Projects section coming soon</p>
-      </section>
+      {/* Projects Section — Featured Case Study Teasers */}
+      <ProjectsSection />
 
-      {/* Skills Section - Placeholder */}
-      <section id="skills" className="py-16 px-4 max-w-4xl mx-auto">
-        <h2 className="text-4xl font-bold mb-8">Skills &amp; Technologies</h2>
-        <p className="text-lg text-muted-foreground">Skills section coming soon</p>
-      </section>
+      {/* Skills Section — Categorized Glow Cards */}
+      <SkillsSection />
 
-      {/* Contact Section - Placeholder */}
-      <section id="contact" className="py-16 px-4 max-w-4xl mx-auto">
-        <h2 className="text-4xl font-bold mb-8">Get In Touch</h2>
-        <p className="text-lg text-muted-foreground">Contact section coming soon</p>
-      </section>
+      {/* Contact Section — CTA + Form */}
+      <ContactSection />
     </div>
   )
 }

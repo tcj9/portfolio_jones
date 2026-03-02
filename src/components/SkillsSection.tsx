@@ -1,0 +1,282 @@
+import { useState } from 'react'
+import { motion, AnimatePresence } from 'motion/react'
+import {
+  staggerChildScaleIn,
+} from '../lib/animations'
+import {
+  Code2,
+  Layers,
+  Library,
+  TestTube2,
+  Server,
+  ShieldCheck,
+} from 'lucide-react'
+
+/**
+ * SkillsSection — Categorized Skill Cards with Glow
+ *
+ * Skills organized by: Languages | Frameworks | Libraries | Testing | Infrastructure | Security
+ * Each skill: name, proficiency signal, 1-2 project examples
+ * Animation: staggered entrance on scroll, hover glow effect
+ */
+
+interface Skill {
+  name: string
+  /** 1-5 proficiency level (displayed as bar fill) */
+  level: number
+  /** Brief context — where this skill was applied */
+  context: string
+}
+
+interface SkillCategory {
+  title: string
+  icon: React.ReactNode
+  accent: string
+  glowColor: string
+  skills: Skill[]
+}
+
+const skillCategories: SkillCategory[] = [
+  {
+    title: 'Languages',
+    icon: <Code2 className="w-5 h-5" />,
+    accent: 'from-emerald-400 to-green-500',
+    glowColor: 'rgba(34, 197, 94, 0.12)',
+    skills: [
+      { name: 'C# / .NET', level: 5, context: 'Enterprise ASP.NET — statewide government systems' },
+      { name: 'JavaScript / ECMAScript', level: 5, context: 'Full-stack — from legacy jQuery to modern ES2024' },
+      { name: 'TypeScript', level: 4, context: 'Next.js, React — type-safe architecture' },
+      { name: 'SQL / T-SQL', level: 4, context: 'SQL Server — schema design, migrations, stored procedures' },
+      { name: 'HTML / CSS', level: 5, context: 'Semantic markup, responsive design, accessibility-first' },
+    ],
+  },
+  {
+    title: 'Frameworks',
+    icon: <Layers className="w-5 h-5" />,
+    accent: 'from-cyan-400 to-blue-500',
+    glowColor: 'rgba(34, 211, 238, 0.12)',
+    skills: [
+      { name: 'ASP.NET (MVC / Web API)', level: 5, context: 'Enterprise apps, government contractor — 4+ years' },
+      { name: 'Next.js', level: 4, context: 'One Drop Video — SSR, API routes, Vercel deployment' },
+      { name: 'React', level: 5, context: 'Portfolio, One Drop, Mini Games — component architecture' },
+      { name: 'Entity Framework', level: 4, context: 'Database-first & code-first ORM in enterprise systems' },
+    ],
+  },
+  {
+    title: 'Libraries',
+    icon: <Library className="w-5 h-5" />,
+    accent: 'from-blue-500 to-violet-500',
+    glowColor: 'rgba(99, 102, 241, 0.12)',
+    skills: [
+      { name: 'Motion.js', level: 4, context: 'Portfolio, Mini Games — cinematic scroll animations' },
+      { name: 'React Router', level: 4, context: 'Hybrid routing — scroll anchors + routed pages' },
+      { name: 'Tailwind CSS', level: 5, context: 'Utility-first styling across all modern projects' },
+      { name: 'ShadCN / Radix UI', level: 4, context: 'Accessible component primitives' },
+    ],
+  },
+  {
+    title: 'Testing',
+    icon: <TestTube2 className="w-5 h-5" />,
+    accent: 'from-violet-500 to-purple-500',
+    glowColor: 'rgba(139, 92, 246, 0.12)',
+    skills: [
+      { name: 'Unit Testing', level: 4, context: 'NUnit, xUnit — enterprise C# test suites' },
+      { name: 'Integration Testing', level: 4, context: 'API contract testing, database integration' },
+      { name: 'Manual QA Collaboration', level: 5, context: 'Cross-team QA — test plans, bug triage, regression' },
+    ],
+  },
+  {
+    title: 'Infrastructure',
+    icon: <Server className="w-5 h-5" />,
+    accent: 'from-amber-400 to-orange-500',
+    glowColor: 'rgba(251, 191, 36, 0.12)',
+    skills: [
+      { name: 'CI/CD Pipelines', level: 4, context: 'Azure DevOps, GitHub Actions — build + deploy automation' },
+      { name: 'SQL Server Administration', level: 4, context: 'Backups, migrations, performance tuning' },
+      { name: 'Server Environment Setup', level: 4, context: 'Post-ransomware infrastructure rebuild' },
+      { name: 'Git / Version Control', level: 5, context: 'Branching strategies, code review, merge workflows' },
+    ],
+  },
+  {
+    title: 'Security',
+    icon: <ShieldCheck className="w-5 h-5" />,
+    accent: 'from-red-400 to-rose-500',
+    glowColor: 'rgba(251, 113, 133, 0.12)',
+    skills: [
+      { name: 'CompTIA Security+', level: 4, context: 'Certified — threat analysis, risk management' },
+      { name: 'CompTIA Network+', level: 4, context: 'Certified — network architecture, troubleshooting' },
+      { name: 'OAuth / Auth Security', level: 4, context: 'One Drop — encrypted credentials, preemptive refresh' },
+      { name: 'Infrastructure Hardening', level: 4, context: 'Post-incident rebuild — security posture improvement' },
+    ],
+  },
+]
+
+function ProficiencyBar({ level, accent }: { level: number; accent: string }) {
+  return (
+    <div className="flex gap-1 items-center">
+      {Array.from({ length: 5 }).map((_, i) => (
+        <motion.div
+          key={i}
+          className={`h-1.5 rounded-full ${
+            i < level
+              ? `bg-linear-to-r ${accent}`
+              : 'bg-slate-700'
+          }`}
+          style={{ width: i < level ? '100%' : '100%' }}
+          initial={{ scaleX: 0 }}
+          whileInView={{ scaleX: 1 }}
+          transition={{ delay: i * 0.08, duration: 0.4, ease: 'easeOut' }}
+          viewport={{ once: true }}
+        />
+      ))}
+    </div>
+  )
+}
+
+function SkillCard({ category }: { category: SkillCategory }) {
+  const [isExpanded, setIsExpanded] = useState(false)
+
+  return (
+    <motion.div
+      variants={staggerChildScaleIn}
+      whileHover={{
+        y: -4,
+        boxShadow: `0 20px 60px ${category.glowColor}, 0 8px 24px rgba(0, 0, 0, 0.3)`,
+      }}
+      transition={{ type: 'spring', visualDuration: 0.3, bounce: 0.2 }}
+      className="relative rounded-xl border border-slate-700/50 bg-slate-800/30 backdrop-blur-sm overflow-hidden cursor-pointer group"
+      onClick={() => setIsExpanded(!isExpanded)}
+    >
+      {/* Top glow accent */}
+      <div
+        className={`absolute top-0 left-0 right-0 h-px bg-linear-to-r ${category.accent} opacity-50 group-hover:opacity-100 transition-opacity`}
+      />
+
+      {/* Header */}
+      <div className="p-6 pb-4">
+        <div className="flex items-center gap-3 mb-4">
+          <div
+            className={`w-10 h-10 rounded-lg bg-linear-to-br ${category.accent} flex items-center justify-center text-slate-900`}
+          >
+            {category.icon}
+          </div>
+          <div>
+            <h3 className="text-lg font-bold text-slate-100">
+              {category.title}
+            </h3>
+            <span className="text-xs text-slate-500">
+              {category.skills.length} skills
+            </span>
+          </div>
+          {/* Expand indicator */}
+          <motion.div
+            className="ml-auto text-slate-500"
+            animate={{ rotate: isExpanded ? 180 : 0 }}
+            transition={{ duration: 0.3 }}
+          >
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+            </svg>
+          </motion.div>
+        </div>
+
+        {/* Skill names preview (always visible) */}
+        <div className="flex flex-wrap gap-1.5">
+          {category.skills.map((skill) => (
+            <span
+              key={skill.name}
+              className="text-xs px-2.5 py-1 rounded-md bg-slate-700/50 text-slate-300 border border-slate-600/30"
+            >
+              {skill.name}
+            </span>
+          ))}
+        </div>
+      </div>
+
+      {/* Expanded detail */}
+      <AnimatePresence>
+        {isExpanded && (
+          <motion.div
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: 'auto', opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.4, ease: 'easeInOut' }}
+            className="overflow-hidden"
+          >
+            <div className="px-6 pb-6 space-y-4 border-t border-slate-700/30 pt-4">
+              {category.skills.map((skill) => (
+                <div key={skill.name} className="space-y-1.5">
+                  <div className="flex items-center justify-between">
+                    <span className="text-sm font-medium text-slate-200">
+                      {skill.name}
+                    </span>
+                  </div>
+                  <ProficiencyBar level={skill.level} accent={category.accent} />
+                  <p className="text-xs text-slate-500 leading-relaxed">
+                    {skill.context}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </motion.div>
+  )
+}
+
+export default function SkillsSection() {
+  return (
+    <section id="skills" className="py-24 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+      {/* Background accent */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-cyan-500/[0.02] rounded-full blur-3xl" />
+        <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-violet-500/[0.02] rounded-full blur-3xl" />
+      </div>
+
+      <div className="max-w-6xl mx-auto relative z-10">
+        {/* Section Header */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+          className="mb-16 text-center"
+        >
+          <h2 className="text-4xl md:text-5xl font-bold mb-6">
+            <span className="bg-linear-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
+              Skills & Technologies
+            </span>
+          </h2>
+          <p className="text-lg text-slate-400 max-w-2xl mx-auto leading-relaxed">
+            Tools used in real systems—not listed casually, but framed by the enterprise,
+            government, and infrastructure challenges they solved.
+          </p>
+        </motion.div>
+
+        {/* Skill Category Grid */}
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: '-60px' }}
+          variants={{
+            hidden: { opacity: 0 },
+            visible: {
+              opacity: 1,
+              transition: {
+                when: 'beforeChildren',
+                staggerChildren: 0.1,
+                delayChildren: 0.15,
+              },
+            },
+          }}
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+        >
+          {skillCategories.map((category) => (
+            <SkillCard key={category.title} category={category} />
+          ))}
+        </motion.div>
+      </div>
+    </section>
+  )
+}

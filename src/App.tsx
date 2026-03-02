@@ -10,8 +10,6 @@ function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/projects/:id" element={<ProjectDetailPage />} />
       </Routes>
-
-      Testing...
     </Layout>
   )
 }
