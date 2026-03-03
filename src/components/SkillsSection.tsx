@@ -313,7 +313,7 @@ function SkillCard({ category }: { category: SkillCategory }) {
               {category.skills.map((skill) => (
                 <div key={skill.name} className="space-y-1.5">
                   <div className="flex items-center justify-between">
-                    <span className="text-sm font-medium text-slate-200">
+                    <span className="text-sm font-medium">
                       {skill.name}
                     </span>
                   </div>
