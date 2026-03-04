@@ -39,7 +39,7 @@ const skillCategories: SkillCategory[] = [
   {
     title: "Languages",
     icon: <Code2 className="w-5 h-5" />,
-    accent: "from-emerald-400 to-green-500",
+    accent: "from-chart-1 to-chart-1/40",
     glowColor: "rgba(34, 197, 94, 0.12)",
     skills: [
       {
@@ -73,7 +73,7 @@ const skillCategories: SkillCategory[] = [
   {
     title: "Frameworks",
     icon: <Layers className="w-5 h-5" />,
-    accent: "from-cyan-400 to-blue-500",
+    accent: "from-chart-3 to-chart-3/40",
     glowColor: "rgba(34, 211, 238, 0.12)",
     skills: [
       {
@@ -102,7 +102,7 @@ const skillCategories: SkillCategory[] = [
   {
     title: "Libraries",
     icon: <Library className="w-5 h-5" />,
-    accent: "from-blue-500 to-violet-500",
+    accent: "from-chart-4 to-chart-4/40",
     glowColor: "rgba(99, 102, 241, 0.12)",
     skills: [
       {
@@ -130,7 +130,7 @@ const skillCategories: SkillCategory[] = [
   {
     title: "Testing",
     icon: <TestTube2 className="w-5 h-5" />,
-    accent: "from-violet-500 to-purple-500",
+    accent: "from-chart-2 to-chart-2/40 dark:from-orange-700/80 dark:to-orange-200/80",
     glowColor: "rgba(139, 92, 246, 0.12)",
     skills: [
       {
@@ -153,7 +153,7 @@ const skillCategories: SkillCategory[] = [
   {
     title: "Infrastructure",
     icon: <Server className="w-5 h-5" />,
-    accent: "from-amber-400 to-orange-500",
+    accent: "from-zinc-300 to-zinc-800/40 dark:from-zinc-600 dark:to-zinc-900",
     glowColor: "rgba(251, 191, 36, 0.12)",
     skills: [
       {
@@ -246,7 +246,7 @@ function SkillCard({ category }: { category: SkillCategory }) {
     >
       {/* Top glow accent */}
       <div
-        className={`absolute top-0 left-0 right-0 h-px bg-linear-to-r ${category.accent} opacity-50 group-hover:opacity-100 transition-opacity`}
+        className={`absolute top-0 left-0 right-0 h-1 bg-linear-to-r ${category.accent} opacity-50 group-hover:opacity-100 transition-opacity`}
       />
 
       {/* Header */}
@@ -313,17 +313,13 @@ function SkillCard({ category }: { category: SkillCategory }) {
               {category.skills.map((skill) => (
                 <div key={skill.name} className="space-y-1.5">
                   <div className="flex items-center justify-between">
-                    <span className="text-sm font-medium">
-                      {skill.name}
-                    </span>
+                    <span className="text-sm font-medium">{skill.name}</span>
                   </div>
                   <ProficiencyBar
                     level={skill.level}
                     accent={category.accent}
                   />
-                  <p className="text-xs leading-relaxed">
-                    {skill.context}
-                  </p>
+                  <p className="text-xs leading-relaxed">{skill.context}</p>
                 </div>
               ))}
             </div>
@@ -355,15 +351,13 @@ export default function SkillsSection() {
           viewport={{ once: true }}
           className="mb-16 text-center"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">
-            <span className="bg-linear-to-r from-primary to-cyan-500 bg-clip-text text-transparent">
-              Skills & Technologies
-            </span>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 md:mb-6">
+            <span className="header-text">Skills & Technologies</span>
           </h2>
-          <p className="text-lg text-slate-400 max-w-2xl mx-auto leading-relaxed">
+          <p className="text-lg max-w-2xl mx-auto leading-relaxed">
             An overview of my technical expertise. Each skill includes a
-            proficiency level and real-world context to demonstrate how I've
-            applied these technologies in various projects.
+            proficiency level and context to demonstrate how I've
+            applied these technologies.
           </p>
         </motion.div>
 
