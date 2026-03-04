@@ -29,10 +29,12 @@ export default function ProjectListPage() {
           className="mb-16 text-center"
         >
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 md:mb-6">
-            <span className="header-text">All Projects</span>
+            <span className="header-text">Projects</span>
           </h1>
           <p className="text-lg max-w-2xl mx-auto leading-relaxed text-muted-foreground">
-            A collection of
+            Things I am, or have been, working on. Some are open source, some
+            are not. Some are public, some are private. All of them are things I
+            care about.
           </p>
         </motion.div>
 
