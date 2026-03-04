@@ -7,6 +7,7 @@ import {
 } from "motion/react";
 import ParticleNetwork from "./ParticleNetwork";
 import { Button } from "./ui/button";
+import { Link } from "react-router";
 
 /**
  * HeroSection — Cinematic Scrollytelling
@@ -348,16 +349,11 @@ export default function HeroSection() {
             scrollProgress={scrollYProgress}
             enterAt={[0.2, 0.55]}
           >
-            <a
-              href="/#projects"
-            >
-              <Button
-                size="lg"
-                style={boxStyle}
-              >
+            <Link to="/projects">
+              <Button size="lg" style={boxStyle}>
                 Explore My Work
               </Button>
-            </a>
+            </Link>
           </ScrollRevealLine>
         </motion.div>
 
