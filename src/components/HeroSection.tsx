@@ -259,7 +259,7 @@ export default function HeroSection() {
 
   const boxStyle = {
     filter:
-      "drop-shadow(0 1px 5px var(--primary-foreground)) drop-shadow(0 5px 10px var(--primary))",
+      "drop-shadow(0 1px 2px var(--background)) drop-shadow(0 0px 1px var(--chart-4))",
   };
 
   return (
@@ -314,8 +314,8 @@ export default function HeroSection() {
             className="mb-6"
           >
             <p
-              className="text-xl sm:text-2xl md:text-3xl font-medium tracking-wide"
-              style={{ color: "var(--hero-node)" }}
+              className="text-xl sm:text-2xl md:text-3xl font-bold tracking-wide header-text"
+              // style={{ color: "var(--chart-2)" }}
             >
               Senior Software Engineer &amp; Systems Analyst
             </p>
