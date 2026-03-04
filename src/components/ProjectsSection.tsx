@@ -35,7 +35,7 @@ const projects: ProjectTeaser[] = [
       "Creators need to distribute short-form video across multiple platforms without manual upload to each. Existing solutions are scheduler-first suites—One Drop is pure distribution.",
     techStack: ["Next.js", "Convex", "Vercel", "TypeScript", "OAuth 2.0"],
     icon: <Zap className="w-8 h-8" />,
-    gradient: "from-emerald-500 via-cyan-500 to-blue-600",
+    gradient: "from-primary via-primary/40 to-chart-4/10",
     glowColor: "rgba(34, 197, 94, 0.2)",
     isFlagship: true,
   },
@@ -47,7 +47,7 @@ const projects: ProjectTeaser[] = [
       "One Drop exposed the need for a generalized, reusable task orchestration system with retry policies, circuit breakers, and failure classification—extracted as a standalone framework.",
     techStack: ["TypeScript", "Event-Driven", "State Machine", "Convex"],
     icon: <Cog className="w-8 h-8" />,
-    gradient: "from-emerald-500 via-cyan-500 to-blue-600",
+    gradient: "from-primary via-primary/40 to-chart-4/10",
     glowColor: "rgba(34, 197, 94, 0.2)",
     isFlagship: false,
   },
@@ -59,7 +59,7 @@ const projects: ProjectTeaser[] = [
       "2+ player game container with modular, heavily animated games—Rock-Paper-Scissors, Heads or Tails, Tic-Tac-Toe—with session-based isolation and extensible architecture.",
     techStack: ["React", "Motion.js", "TypeScript", "GitHub Pages"],
     icon: <Gamepad2 className="w-8 h-8" />,
-    gradient: "from-emerald-500 via-cyan-500 to-blue-600",
+    gradient: "from-primary via-primary/40 to-chart-4/10",
     glowColor: "rgba(34, 197, 94, 0.2)",
     isFlagship: false,
   },
@@ -186,15 +186,11 @@ export default function ProjectsSection() {
           viewport={{ once: true }}
           className="mb-16 text-center"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">
-            <span className="bg-linear-to-r from-emerald-400 via-cyan-400 to-blue-500 bg-clip-text text-transparent">
-              Featured Projects
-            </span>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 md:mb-6">
+            <span className="header-text">Featured Projects</span>
           </h2>
-          <p className="text-lg text-slate-400 max-w-2xl mx-auto leading-relaxed">
-            Each project is a case study in solving real problems—architecture
-            decisions, tradeoffs, and the reasoning behind every technical
-            choice.
+          <p className="text-lg max-w-2xl mx-auto leading-relaxed">
+            Each project is a case study in solving real problems.
           </p>
         </motion.div>
 
