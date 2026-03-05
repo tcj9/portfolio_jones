@@ -112,7 +112,7 @@ export const projects: ProjectDetail[] = [
     subtitle: "Animation Showcase",
     problem:
       "2+ player game container with modular, heavily animated games—Rock-Paper-Scissors, Heads or Tails, Tic-Tac-Toe—with session-based isolation and extensible architecture.",
-    techStack: ["React", "Motion.js", "TypeScript", "GitHub Pages"],
+    techStack: ["React", "Motion.js", "TypeScript", "Vite"],
     iconName: "Gamepad2",
     gradient: "from-primary via-primary/40 to-chart-4/10",
     glowColor: "rgba(34, 197, 94, 0.2)",
@@ -166,8 +166,8 @@ export const projects: ProjectDetail[] = [
     whyItMatters:
       "Direct showcase of Motion.js expertise and cinematic animation engineering. Demonstrates ability to build modular, extensible architecture — the same principles that apply to enterprise plugin systems.",
     status: "Live",
-    liveUrl: "https://tcj-23.github.io/plugin-games",
-    repoUrl: "https://github.com/tcj-23/plugin-games",
+    liveUrl: "https://minigames-nu.vercel.app/",
+    repoUrl: "https://github.com/tcj-23/mini_games.git",
   },
   {
     id: "doc-supreme",
