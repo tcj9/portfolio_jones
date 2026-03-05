@@ -23,6 +23,7 @@ export interface ProjectTeaser {
   gradient: string;
   glowColor: string;
   isFlagship: boolean;
+  isComingSoonMode?: boolean;
 }
 
 // ——————————————————————————————————————

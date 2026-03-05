@@ -53,6 +53,31 @@ export default function ProjectDetailPage() {
     );
   }
 
+  if (project.isComingSoonMode) {
+    return (
+      <div className="min-h-screen flex items-center justify-center px-4">
+        <motion.div
+          className="text-center space-y-4"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+        >
+          <h1 className="text-4xl sm:text-5xl font-bold">{project.title}</h1>
+          <p className="text-xl text-muted-foreground font-medium">
+            Coming Soon
+          </p>
+          <Link
+            to="/projects"
+            className="inline-flex items-center gap-2 text-emerald-400 font-semibold hover:text-emerald-300 transition-colors"
+          >
+            <ArrowLeft className="w-4 h-4" />
+            Back to Projects
+          </Link>
+        </motion.div>
+      </div>
+    );
+  }
+
   return (
     <article className="min-h-screen">
       {/* ——— Hero Section ——— */}

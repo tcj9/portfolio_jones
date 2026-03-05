@@ -171,16 +171,16 @@ export const projects: ProjectDetail[] = [
   },
   {
     id: "doc-supreme",
+    isComingSoonMode: true,
     title: "Doc Supreme",
     subtitle: "Documentation Platform",
     problem:
-      "Development teams need a single-source-of-truth documentation system for tools, libraries, and APIs — versioned, searchable, and always current with the actual code they use.",
+      "Development teams need a single-source-of-truth documentation system for tools, libraries, and APIs that are versioned, searchable, and always current with the actual code they use.",
     techStack: ["Markdown", "Vite", "TypeScript", "Dark UI"],
     iconName: "BookOpen",
     gradient: "from-primary via-primary/40 to-chart-4/10",
     glowColor: "rgba(34, 197, 94, 0.2)",
     isFlagship: false,
-
     description:
       "Doc Supreme is a documentation platform built to solve a personal pain point: keeping track of API references, library documentation, and tool configurations across multiple projects. Instead of relying on bookmarks and scattered notes, Doc Supreme provides versioned, structured documentation with syntax highlighting and a clean dark UI optimized for long reading sessions.",
     whatItDoes:

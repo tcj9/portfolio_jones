@@ -28,6 +28,15 @@ export default function ProjectTeaserCard({
       transition={{ type: "spring", visualDuration: 0.3, bounce: 0.15 }}
       className="group relative rounded-xl border border-primary/40 bg-card backdrop-blur-sm overflow-hidden"
     >
+      {/* Coming Soon overlay */}
+      {project.isComingSoonMode && (
+        <div className="absolute inset-0 z-20 flex items-center justify-center bg-black/60 backdrop-blur-[2px]">
+          <span className="text-lg font-bold text-white tracking-wide uppercase">
+            Coming Soon
+          </span>
+        </div>
+      )}
+
       <Link to={`/projects/${project.id}`} className="block">
         {/* Placeholder Image — gradient + icon */}
         <div
